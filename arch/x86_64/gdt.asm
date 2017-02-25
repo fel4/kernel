@@ -1,7 +1,11 @@
 section .text
 bits 32
 
+section .bss
+align 4096
+
 section .rodata
+align 4096
 global gdt64, gdt64.code, gdt64.data, gdt64.user_code, gdt64.user_data, gdt64.pointer
 gdt64:
     dq 0 ; zero entry

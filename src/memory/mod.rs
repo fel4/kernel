@@ -111,13 +111,13 @@ pub fn init(boot_info: &BootInformation) {
         let mut frame_allocator = AreaFrameAllocator::new(kernel_start as usize, kernel_end as usize,
             multiboot_start, multiboot_end, memory_map_tag.memory_areas());
 
-        println!("{:?}", frame_allocator.allocate_frame());
+        /*println!("{:?}", frame_allocator.allocate_frame());
 
         for i in 1..10 {
             if let Some(frame) = frame_allocator.allocate_frame() {
                 println!("Frame {} at 0x{:x}", i, frame.start_address());
             }
-        }
+        }*/
 
         //memory::test_paging(&mut frame_allocator);
         let mut active_table = remap_the_kernel(&mut frame_allocator, boot_info);

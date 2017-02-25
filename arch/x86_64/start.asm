@@ -79,6 +79,6 @@ check_long_mode:
 section .bss
 align 4096
 stack_bottom:
-    resb 1 << 21              ; This reserves 2MiB of memory here
+    resb 1 << 16             ; This reserves 64KiB of memory here
 stack_top:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

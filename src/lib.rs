@@ -56,7 +56,7 @@ pub extern fn rust_main(multiboot_information_address: usize) {
     interrupts::init();
 
     // cause a breakpoint.
-    unsafe { int!(3) };
+    //unsafe { int!(3) };
     // test divide by zero.
     //divide_by_zero();
     // test invalid opcode.
