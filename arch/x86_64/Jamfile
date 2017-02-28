@@ -1,10 +1,6 @@
 SubDir TOP kernel arch x86_64 ;
 
-local asms = [ Glob $(SEARCH_SOURCE) : *.asm ] ;
-local objs = $(asms:S=$(SUFOBJ):R=build) ;
+NASM.Sources = [ Glob $(SUBDIR) : *.asm ] ;
 
-Echo $(objs) ;
+NASM.Flags += -felf64 ; 
 
-local flags = -felf64 ; 
-
-Nasm kernel : $(asms) : $(flags) ;
