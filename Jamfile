@@ -1,5 +1,12 @@
 SubDir TOP kernel ;
 
-Rust.Cargo $(_t) : shard_kernel : build ;
+local kernel_t = $(_t) ;
+
+local target_file = x86_64-fel4-kernel-elf.json ;
+SEARCH on $(target_file) = $(SEARCH_SOURCE) ;
+
+Rust.Cargo $(kernel_t) : shard_kernel : build ;
+
+CARGOFLAGS on $(kernel_t) = --target=$(target_file:B) ;
 
 Depends $(_t) : $(kernel_t) ;
