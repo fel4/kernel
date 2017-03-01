@@ -4,3 +4,4 @@ NASM.Sources = [ Glob $(SUBDIR) : *.asm ] ;
 
 NASM.Flags += -felf64 ; 
 
+Nasm $(_t) : $(NASM.Sources) : $(NASM.Flags) ;

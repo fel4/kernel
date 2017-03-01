@@ -1,4 +1,5 @@
 SubDir TOP kernel ;
 
+Rust.Cargo $(_t) : shard_kernel : build ;
 
- 
+Depends $(_t) : $(kernel_t) ;
