@@ -1,12 +1,13 @@
 SubDir TOP kernel ;
 
-local kernel_t = $(_t) ;
+local target = x86_64-fel4-kernel-elf ;
+local mode = debug ;
+local pkg = shard_kernel ;
+CRATE_TYPE on $(pkg) = staticlib ;
+CARGO_CMD on $(pkg) = build ;
+TARGET on $(pkg) = $(target) ;
+MODE on $(pkg) = $(mode) ;
 
-local target_file = x86_64-fel4-kernel-elf.json ;
-SEARCH on $(target_file) = $(SEARCH_SOURCE) ;
+Echo [ Rust.Cargo.GetOutputDir $(target) : $(mode) ] ;
 
-Rust.Cargo $(kernel_t) : shard_kernel : build ;
-
-CARGOFLAGS on $(kernel_t) = --target=$(target_file:B) ;
-
-Depends $(_t) : $(kernel_t) ;
+Rust.Cargo shard_kernel : build ;
