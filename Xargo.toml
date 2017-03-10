@@ -1,3 +1,0 @@
-[target.x86_64-fel4-kernel-elf.dependencies]
-alloc = {}
-collections = {}

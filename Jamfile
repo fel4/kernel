@@ -8,6 +8,4 @@ CARGO_CMD on $(pkg) = build ;
 TARGET on $(pkg) = $(target) ;
 MODE on $(pkg) = $(mode) ;
 
-Echo [ Rust.Cargo.GetOutputDir $(target) : $(mode) ] ;
-
 Rust.Cargo shard_kernel : build ;
