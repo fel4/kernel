@@ -1,7 +1,14 @@
 SubDir TOP kernel arch x86_64 ;
 
-NASM.Sources = [ Glob $(SUBDIR) : *.asm ] ;
+local _platform = [ FReverse $(SUBDIR_TOKENS) ] ;
+_platform = $(_platform[1]) ;
+local _target = $(_platform)-elf ;
 
-NASM.Flags += -felf64 ; 
+local _sources = [ Glob $(SUBDIR) : *.asm ] ;
+_sources = $(_sources:BS) ;
+Echo $(_sources) ;
 
-Nasm $(_t) : $(NASM.Sources) : $(NASM.Flags) ;
+LOCATE_TARGET = [ FDirName $(TOP) build $(_platform) ] ;
+SUBDIRASFLAGS += -felf64 ;
+
+Library libkernel-$(_platform).a : $(_sources) ;
